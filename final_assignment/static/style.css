@@ -1,0 +1,158 @@
+/* ------------------------------------------------STYLE FOR THE HERO SECTION---------------------------------------------------- */
+.hero {
+    position: relative;
+    height: 400px; /* Adjust the height as needed */
+    
+    text-align: center;
+   
+}
+
+/* ------------------------------------------------BACKGROUND HERO ----------------------------------------------------------------*/
+.hero-bg {
+    z-index: index -1;
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+   
+    width: 100%;
+    height: 100%;
+    
+}
+/* -----------------------------------------------HERO CONTENT ------------------------------------------------------------------------*/
+.hero-content {
+    position: absolute; /* Position the content within the .hero container */
+    top: 20%; /* Move the content down by 50% of the .hero container height */
+    left: 50%; /*  Move the content horizontally by 50% of the .hero container width */
+    transform: translate(-50%, -50%); /* Center the content both horizontally and vertically */
+     /* text-align: center; Center-align the text content */
+    color: #fff; /* Set text color to white or your desired color */
+    /* Other styles for the .hero-content section go here */
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+    
+}
+
+/*------------------------------------------------HEADING INSIDE HERO SECTION--------------------------------------------------------*/
+.hero h1{
+    color:blueviolet;
+   position: center;
+   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+   font-size: 35px;
+}
+
+/* -----------------------------------------------MEDIA QUERIES FOR RESPONSIVE DESIGN -------------------------------------------------*/
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 28px; /* Adjust the font size for smaller screens */
+    }
+}
+
+/* Media query for smaller screens */
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 24px; /* Adjust the font size for even smaller screens */
+    }
+}
+
+/* ------------------------------------------------STYLE INSTRUCTION CLASS--------------------------------------------------------------*/
+.instructions {
+    background-color: #e9c1c1; /* Set the background color */
+    padding: 20px; /* Add some padding for spacing */
+    text-align: center; /* Left-align the text content */
+    
+}
+/*INSTRUCTION HEADER*/
+.instructions h3{
+    text-align: center;
+    color: chocolate;
+    font-size: 18px;
+}
+/*INSTRUCTION PARAGRAPH*/
+.instructions p {
+    font-size: 18px; /* Set the font size for paragraphs */
+    margin: 10px 0; /* Add margin for spacing between paragraphs */
+}
+/*INSTRUCTION unordered list*/
+.instructions ul {
+    list-style-type: disc;
+    margin-left: auto; /* Center-align the list */
+    margin-right: auto; /* Center-align the list */
+    width: fit-content; /* Make the list width fit its content */
+    font-size: 18px;
+    text-align: left; /* Left-align the list items */
+    padding-left: 0; /* Remove default padding */
+}
+
+/*INSTRUCTION LIST*/
+.instructions li {
+    margin: 5px 0; /* Add margin for spacing between list items */
+}
+
+/*LEVEL 2 HEADING*/
+h2{
+    color: blue;
+    text-align: center;
+}
+
+/* ------------------------------------------------VIDEO SECTION-----------------------------------------------------------------------*/
+.video {
+    text-align: center;
+  }
+  
+  /* Style the video title */
+  .video h3 {
+    color: #333; 
+    font-size: 24px; 
+  }
+  
+  /* Style the video container */
+  .video video {
+    width: 100%; /* Make the video container take up the full width */
+    max-width: 640px; /* Set a maximum width if needed */
+    height: auto; /* Maintain the video's aspect ratio */
+    display: block; /* Remove any default margins or paddings */
+    margin: 0 auto; /* Center-align the video horizontally */
+  }
+  
+
+/* ------------------------------------------------------CONTAINER FOR BUTTONS------------------------------------------------------------- */
+.button-container {
+    text-align: center;
+    margin-top: 20px; /* Adjust margin as needed to separate from the hero content */
+  }
+  
+  /* Style the buttons */
+  .button-container input[type="file"],
+  .button-container input[type="submit"] {
+    background-color: #2561d0e6;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 5px; /* Add margin to space the buttons */
+  }
+  
+  /* Style the hover effect for buttons */
+  .button-container input[type="file"]:hover,
+  .button-container input[type="submit"]:hover {
+    background-color: #00b362;
+  }
+  
+
+/* ---------------------------------------------------------FOOTER--------------------------------------------------------------------- */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.footer-content {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.footer-content p {
+    margin: 0;
+}

@@ -1,0 +1,138 @@
+<!--*************************************DOCUMENTATION & HEADER ************************************************-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta information -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sentiment Analyzer</title>
+    <!-- Link to external CSS stylesheet -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+
+<!--******************************************BODY SECTION*****************************************************************************-->
+<!--******************************************BODY SECTION*****************************************************************************-->
+
+
+  <body>
+    <!--*****************************************Hero Section***************************************************************-->
+    <div class="hero">
+      <div
+        class="hero-bg"
+        style="background-image: url('{{ url_for('static', filename='biendep.jpg') }}'); background-size:cover; background-position:center;"
+      ></div>
+      <div class="hero-content">
+        <h1>WELCOME TO SENTIMENT ANALYZER</h1>
+        <p>
+          Analyze text sentiment effortlessly and gain valuable insights from
+          your data
+        </p>
+      </div>
+    </div>
+
+    <!--********************************************** Instructions Section************************************************* -->
+    <div class="instructions">
+      <h3>INSTRUCTIONS</h3>
+      <p>Upload a CSV or TXT file to analyze sentiment in text data.</p>
+      <p>Follow the instructions below:</p>
+      <ul>
+        <li>Click the "Choose File" button to select a file.</li>
+        <li>Click "Upload and Analyze" to start the analysis.</li>
+      </ul>
+    </div>
+
+    <!-- Video Section -->
+    <div class="video">
+      <h3>How to Use Sentiment Analyzer</h3>
+      <video width="640" height="360" controls>
+        <source
+          src="{{ url_for('static', filename='sentimentAnalyzer.mp4') }}"
+          type="video/mp4"
+        />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+
+    <!-- ********************************************MAIN CONTAINER****************************************************************-->
+    <!-- ********************************************MAIN CONTAINER****************************************************************-->
+    <div class="main-content">
+      <h2>Start Analyzing Sentiment</h2>
+
+      <!-- ***************************************Display error messages **********************************************************-->
+      {% if error %}
+      <p style="color: red">Error: {{ error }}</p>
+      {% endif %}
+
+       <!-- *************************************Form for uploading a file *******************************************************-->
+      <form
+        action="/upload"
+        method="POST"
+        enctype="multipart/form-data"
+        class="button-container"
+      >
+        <input type="file" name="file" accept=".csv, .txt" required />
+        <input type="submit" value="Upload and Analyze" />
+      </form>
+
+      <!-- ****************************************Display analysis results if available *******************************************-->
+      {% if filename %}
+      <h2>Uploaded File: {{ filename }}</h2>
+      <h2>Sentiment Analysis Summary:</h2>
+
+      <img
+        src="{{ url_for('static', filename='sentiment_summary.png') }}"
+        alt="Sentiment Analysis Summary"
+      />
+      <!--***************************************allow user to download the graph summary*******************************************-->
+      <a href="{{ url_for('static', filename='sentiment_summary.png') }}" download>Download Chart</a>
+
+      <h2>Sentiment Percentages:</h2>
+      <ul>
+        <li>Positive: {{ percentages.Positive | round(2) }}%</li>
+        <li>Neutral: {{ percentages.Neutral | round(2) }}%</li>
+        <li>Negative: {{ percentages.Negative | round(2) }}%</li>
+      </ul>
+
+      <h2>Individual Sentiment Analysis:</h2>
+      <table>
+        <tr>
+          <th>Text</th>
+          <th>Sentiment</th>
+        </tr>
+        {% for index, row in df.iterrows() %}
+        <tr>
+          <td>{{ row['Text'] }}</td>
+          <td>{{ row['Sentiment'] }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+
+      <!-- ****************************************Export functionality ***********************************************************-->
+      <h2>Export Results:</h2>
+      <form action="/export" method="GET">
+        <!-- ***********************************Dropdown for selecting export format (CSV or TXT) **********************************-->
+        <select name="ext">
+          <option value="csv">CSV</option>
+          <option value="txt">TXT</option>
+        </select>
+        <!-- **********************************Export button ***********************************************************************-->
+        <input type="submit" value="Export" />
+      </form>
+      <!-- End of export functionality -->
+      <br><br>
+      <!-- ********************************Clear Results and Upload New File button *************************************************-->
+      <button onclick="location.href='{{ url_for('index') }}'">Clear Results and Upload New File</button>
+      {% endif %}
+    </div>
+    <br /><br/><br>
+    <!-- ***************************************Footer Section ************************************************************************-->
+    <footer>
+      <div class="footer-content">
+        <p>&copy; 2023 Sentiment Analyzer. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
